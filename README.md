@@ -63,5 +63,20 @@ Opens the HTML report in your browser (default: http://localhost:9922).
 ├── playwright.config.ts
 ├── package.json
 └── .env
+
+## keys - add them in .env files on base directory of prokect or in project directly
+# LLM Configuration — Groq (free), Google Gemini, or OpenAI
+GROQ_API_KEY=shared personally
+LLM_PROVIDER=groq
+LLM_MODEL=llama-3.1-8b-instant
+# LLM_MAX_TOKENS=2048
+# LLM_TEMPERATURE=0.2
+# ENABLE_FAILURE_EXPLAINER=true
+# LLM_REPORT_DIR=reports/llm-analysis
+
+# Test Configuration
+# BASE_URL=http://localhost:3000
+
+
 ```
 
