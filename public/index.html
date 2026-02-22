@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TestMu</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required>
+    <button type="submit">Sign in</button>
+  </form>
+  <a href="#" id="forgot-link">Forgot password</a>
+  <p id="message" style="color: red;"></p>
+
+  <script>
+    const validEmail = 'user@example.com';
+    const validPassword = 'correctpassword';
+    let failedAttempts = 0;
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const msg = document.getElementById('message');
+
+      if (failedAttempts >= 5) {
+        msg.textContent = 'Account temporarily locked. Try again in 15 minutes.';
+        return;
+      }
+
+      if (email === validEmail && password === validPassword) {
+        document.cookie = 'logged_in=1; path=/';
+        window.location.href = '/dashboard.html';
+      } else {
+        failedAttempts++;
+        msg.textContent = 'Invalid credentials. Please try again.';
+      }
+    });
+
+    document.getElementById('forgot-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '/forgot.html';
+    });
+  </script>
+</body>
+</html>
